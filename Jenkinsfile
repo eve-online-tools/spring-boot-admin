@@ -51,9 +51,9 @@ pipeline {
                      withKubeConfig([credentialsId: "k8s-credentials", serverUrl: "$SERVER_URL"]) {
                           script {
                                 if (env.IS_SNAPSHOT) {
-                                  sh "helm -n $NAMESPACE upgrade -i eve-sde `pwd`/src/main/helm/spring-boot-admin --set image.tag=$BUILD_RELEASE_VERSION-${env.BUILD_NUMBER} --wait"
+                                  sh "helm -n $NAMESPACE upgrade -i spring-boot-admin `pwd`/src/main/helm/spring-boot-admin --set image.tag=$BUILD_RELEASE_VERSION-${env.BUILD_NUMBER} --wait"
                                 } else {
-                                  sh "helm -n $NAMESPACE upgrade -i eve-sde `pwd`/src/main/helm/spring-boot-admin --set image.tag=$BUILD_RELEASE_VERSION --wait"
+                                  sh "helm -n $NAMESPACE upgrade -i spring-boot-admin `pwd`/src/main/helm/spring-boot-admin --set image.tag=$BUILD_RELEASE_VERSION --wait"
                                 }
                             }
 
