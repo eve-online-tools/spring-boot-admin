@@ -34,7 +34,6 @@ Create chart name and version as used by the chart label.
 Common labels
 */}}
 {{- define "spring-boot-admin.labels" -}}
-spring-boot: "true"
 helm.sh/chart: {{ include "spring-boot-admin.chart" . }}
 {{ include "spring-boot-admin.selectorLabels" . }}
 {{- if .Chart.AppVersion }}

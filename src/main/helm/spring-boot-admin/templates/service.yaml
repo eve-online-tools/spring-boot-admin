@@ -4,6 +4,7 @@ metadata:
   name: {{ include "spring-boot-admin.fullname" . }}
   labels:
     {{- include "spring-boot-admin.labels" . | nindent 4 }}
+    spring-boot: "true"
 spec:
   type: {{ .Values.service.type }}
   ports:
