@@ -2,7 +2,7 @@
 kind: Role
 apiVersion: rbac.authorization.k8s.io/v1
 metadata:
-  name: service-discovery-client
+  name: {{ include "spring-boot-admin.fullname" . }}-role
 rules:
   - apiGroups: [""] # "" indicates the core API group
     resources: ["services", "pods", "configmaps", "endpoints"]
@@ -13,7 +13,7 @@ apiVersion: rbac.authorization.k8s.io/v1
 # You need to already have a Role named "pod-reader" in that namespace.
 kind: RoleBinding
 metadata:
-  name: service-discovery-client
+  name: {{ include "spring-boot-admin.fullname" . }}-rolebinding
 subjects:
   # You can specify more than one "subject"
   - kind: ServiceAccount
@@ -21,5 +21,5 @@ subjects:
 roleRef:
   # "roleRef" specifies the binding to a Role / ClusterRole
   kind: Role #this must be Role or ClusterRole
-  name: service-discovery-client # this must match the name of the Role or ClusterRole you wish to bind to
+  name: {{ include "spring-boot-admin.fullname" . }}-role # this must match the name of the Role or ClusterRole you wish to bind to
   apiGroup: rbac.authorization.k8s.io
