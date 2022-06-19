@@ -4,6 +4,11 @@ server:
 spring:
   application:
     name: spring-boot-admin
+  cloud:
+    kubernetes:
+      discovery:
+        service-labels:
+          spring-boot: true
 
 eureka:
   client:
@@ -30,3 +35,4 @@ logging:
     org:
       hibernate:
         SQL: debug
+
